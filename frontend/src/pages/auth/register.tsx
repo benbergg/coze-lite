@@ -1,14 +1,23 @@
 import { Button, Input, Form, Message } from '@arco-design/web-react';
 import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '@/stores/user';
+import type { RegisterRequest } from '@/types/user';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const register = useUserStore((state) => state.register);
+  const isLoading = useUserStore((state) => state.isLoading);
 
-  const handleSubmit = async (values: any) => {
-    console.log('注册:', values);
-    // TODO: 实现注册逻辑
-    Message.success('注册成功！请登录');
-    navigate('/login');
+  const handleSubmit = async (values: RegisterRequest & { confirmPassword: string }) => {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { confirmPassword, ...registerData } = values;
+      await register(registerData);
+      Message.success('注册成功！');
+      navigate('/workspace', { replace: true });
+    } catch (error) {
+      Message.error('注册失败，请重试');
+    }
   };
 
   return (
@@ -71,7 +80,13 @@ export default function RegisterPage() {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" long size="large">
+            <Button
+              type="primary"
+              htmlType="submit"
+              long
+              size="large"
+              loading={isLoading}
+            >
               注册
             </Button>
           </Form.Item>

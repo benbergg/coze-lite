@@ -1,0 +1,83 @@
+.plugin-marketplace {
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.marketplace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.marketplace-filters {
+  display: flex;
+  gap: 12px;
+}
+
+.marketplace-content {
+  min-height: 400px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 16px;
+  color: var(--color-text-3);
+}
+
+.plugin-card {
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.plugin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.plugin-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.plugin-description {
+  margin: 8px 0;
+  color: var(--color-text-2);
+  font-size: 14px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.plugin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.plugin-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.plugin-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

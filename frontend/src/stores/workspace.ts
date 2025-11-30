@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import type { Workspace, CreateWorkspaceRequest } from '@/types/workspace';
+import { workspaceApi } from '@/services/api/workspace';
 
 interface WorkspaceState {
   // State
   workspaces: Workspace[];
   currentWorkspaceId: string | null;
   isLoading: boolean;
+  error: Error | null;
 
   // Computed
   getCurrentWorkspace: () => Workspace | null;
@@ -14,6 +16,7 @@ interface WorkspaceState {
   fetchWorkspaces: () => Promise<void>;
   setCurrentWorkspace: (id: string) => void;
   createWorkspace: (data: CreateWorkspaceRequest) => Promise<Workspace>;
+  updateWorkspace: (id: string, data: Partial<Workspace>) => Promise<void>;
   deleteWorkspace: (id: string) => Promise<void>;
 }
 
@@ -21,6 +24,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   workspaces: [],
   currentWorkspaceId: null,
   isLoading: false,
+  error: null,
 
   // Computed getter
   getCurrentWorkspace: () => {
@@ -29,25 +33,15 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   },
 
   fetchWorkspaces: async () => {
-    set({ isLoading: true });
+    set({ isLoading: true, error: null });
     try {
-      // TODO: 替换为真实 API 调用
-      // 模拟数据
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      const mockWorkspaces: Workspace[] = [
-        {
-          id: '1',
-          name: '我的工作空间',
-          description: '默认工作空间',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-      ];
-
-      set({ workspaces: mockWorkspaces, isLoading: false });
+      const workspaces = await workspaceApi.getWorkspaces();
+      set({ workspaces, isLoading: false });
     } catch (error) {
-      set({ isLoading: false });
+      set({
+        isLoading: false,
+        error: error as Error,
+      });
       throw error;
     }
   },
@@ -57,28 +51,62 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   },
 
   createWorkspace: async (data) => {
-    // TODO: 替换为真实 API 调用
-    const newWorkspace: Workspace = {
-      id: Date.now().toString(),
-      name: data.name,
-      description: data.description,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+    set({ isLoading: true, error: null });
+    try {
+      const newWorkspace = await workspaceApi.createWorkspace(data);
 
-    set((state) => ({
-      workspaces: [...state.workspaces, newWorkspace],
-    }));
+      set((state) => ({
+        workspaces: [...state.workspaces, newWorkspace],
+        isLoading: false,
+      }));
 
-    return newWorkspace;
+      return newWorkspace;
+    } catch (error) {
+      set({
+        isLoading: false,
+        error: error as Error,
+      });
+      throw error;
+    }
+  },
+
+  updateWorkspace: async (id, data) => {
+    set({ isLoading: true, error: null });
+    try {
+      const updated = await workspaceApi.updateWorkspace(id, data);
+
+      set((state) => ({
+        workspaces: state.workspaces.map((w) =>
+          w.id === id ? { ...w, ...updated } : w
+        ),
+        isLoading: false,
+      }));
+    } catch (error) {
+      set({
+        isLoading: false,
+        error: error as Error,
+      });
+      throw error;
+    }
   },
 
   deleteWorkspace: async (id) => {
-    // TODO: 替换为真实 API 调用
-    set((state) => ({
-      workspaces: state.workspaces.filter((w) => w.id !== id),
-      currentWorkspaceId:
-        state.currentWorkspaceId === id ? null : state.currentWorkspaceId,
-    }));
+    set({ isLoading: true, error: null });
+    try {
+      await workspaceApi.deleteWorkspace(id);
+
+      set((state) => ({
+        workspaces: state.workspaces.filter((w) => w.id !== id),
+        currentWorkspaceId:
+          state.currentWorkspaceId === id ? null : state.currentWorkspaceId,
+        isLoading: false,
+      }));
+    } catch (error) {
+      set({
+        isLoading: false,
+        error: error as Error,
+      });
+      throw error;
+    }
   },
 }));

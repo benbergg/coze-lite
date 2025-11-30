@@ -72,8 +72,8 @@ export default function LoginPage() {
 
         <div className="mt-6 p-3 bg-blue-50 rounded text-sm text-gray-600">
           <p className="font-medium mb-1">演示账户：</p>
-          <p>用户名：任意</p>
-          <p>密码：任意</p>
+          <p>用户名：admin 或 testuser</p>
+          <p>密码：password 或 123456</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,75 @@
+import type { Agent } from '@/types/agent';
+
+export const mockAgents: Agent[] = [
+  {
+    id: 'agent-1',
+    name: '智能助手',
+    description: '通用智能助手，可以回答各种问题',
+    workspaceId: 'workspace-1',
+    config: {
+      name: '智能助手',
+      description: '通用智能助手',
+      prompt: '你是一个友好、专业的 AI 助手。请用简洁、准确的语言回答用户的问题。',
+      model: 'gpt-4',
+      temperature: 0.7,
+      maxTokens: 2000,
+      tools: [
+        {
+          id: 'tool-1',
+          type: 'function',
+          name: 'search',
+          description: '搜索相关信息',
+        },
+      ],
+      workflows: [],
+    },
+    published: true,
+    createdAt: '2025-01-01T00:00:00Z',
+    updatedAt: '2025-01-01T00:00:00Z',
+  },
+  {
+    id: 'agent-2',
+    name: '代码助手',
+    description: '专注于编程和代码相关的问题',
+    workspaceId: 'workspace-1',
+    config: {
+      name: '代码助手',
+      description: '编程专家',
+      prompt: '你是一个编程专家，擅长各种编程语言和技术栈。',
+      model: 'gpt-4',
+      temperature: 0.3,
+      maxTokens: 4000,
+      tools: [
+        {
+          id: 'tool-2',
+          type: 'function',
+          name: 'execute_code',
+          description: '执行代码',
+        },
+      ],
+      workflows: [],
+    },
+    published: false,
+    createdAt: '2025-01-02T00:00:00Z',
+    updatedAt: '2025-01-02T00:00:00Z',
+  },
+  {
+    id: 'agent-3',
+    name: '翻译助手',
+    description: '支持多语言翻译',
+    workspaceId: 'workspace-2',
+    config: {
+      name: '翻译助手',
+      description: '多语言翻译专家',
+      prompt: '你是一个专业的翻译，能够准确翻译多种语言。',
+      model: 'gpt-3.5-turbo',
+      temperature: 0.5,
+      maxTokens: 1000,
+      tools: [],
+      workflows: [],
+    },
+    published: true,
+    createdAt: '2025-01-03T00:00:00Z',
+    updatedAt: '2025-01-03T00:00:00Z',
+  },
+];

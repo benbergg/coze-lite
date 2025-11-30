@@ -1,0 +1,25 @@
+.plugin-config-panel {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.plugin-config-panel h3 {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.plugin-config-panel .arco-collapse {
+  margin-bottom: 24px;
+}
+
+.plugin-config-panel .arco-form-item {
+  margin-bottom: 16px;
+}
+
+.plugin-config-panel .arco-form-item-label-col {
+  font-weight: 500;
+  color: var(--color-text-2);
+}

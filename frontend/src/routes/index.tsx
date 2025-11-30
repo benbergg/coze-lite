@@ -9,6 +9,8 @@ const LoginPage = lazy(() => import('@/pages/auth/login'));
 const RegisterPage = lazy(() => import('@/pages/auth/register'));
 const WorkspaceListPage = lazy(() => import('@/pages/workspace/list'));
 const AgentListPage = lazy(() => import('@/pages/workspace/agent-list'));
+const PluginMarketplacePage = lazy(() => import('@/pages/plugin/marketplace'));
+const KnowledgePage = lazy(() => import('@/pages/knowledge'));
 
 function LoadingFallback() {
   return (
@@ -43,6 +45,8 @@ export function AppRoutes() {
             <Route path=":workspaceId">
               <Route index element={<Navigate to="agents" replace />} />
               <Route path="agents" element={<AgentListPage />} />
+              <Route path="plugins" element={<PluginMarketplacePage />} />
+              <Route path="knowledge" element={<KnowledgePage />} />
               <Route
                 path="library"
                 element={<div className="p-8">资源库（开发中）</div>}

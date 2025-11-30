@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { User, LoginRequest } from '@/types/user';
+import type { User, LoginRequest, RegisterRequest } from '@/types/user';
+import { userApi } from '@/services/api/user';
 import { STORAGE_KEYS } from '@/config/constants';
 
 interface UserState {
@@ -8,12 +9,15 @@ interface UserState {
   user: User | null;
   token: string | null;
   isLoading: boolean;
+  error: Error | null;
 
   // Actions
   setUser: (user: User | null) => void;
   setToken: (token: string | null) => void;
   login: (credentials: LoginRequest) => Promise<void>;
-  logout: () => void;
+  register: (data: RegisterRequest) => Promise<void>;
+  getCurrentUser: () => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 export const useUserStore = create<UserState>()(
@@ -23,6 +27,7 @@ export const useUserStore = create<UserState>()(
       user: null,
       token: null,
       isLoading: false,
+      error: null,
 
       // Actions
       setUser: (user) => set({ user }),
@@ -37,36 +42,70 @@ export const useUserStore = create<UserState>()(
       },
 
       login: async (credentials) => {
-        set({ isLoading: true });
+        set({ isLoading: true, error: null });
         try {
-          // TODO: 替换为真实 API 调用
-          // 模拟登录
-          await new Promise((resolve) => setTimeout(resolve, 500));
-
-          const mockUser: User = {
-            id: '1',
-            username: credentials.username,
-            email: `${credentials.username}@example.com`,
-          };
-
-          const mockToken = 'mock-token-' + Date.now();
+          const { user, token } = await userApi.login(credentials);
 
           set({
-            user: mockUser,
-            token: mockToken,
+            user,
+            token,
             isLoading: false,
           });
 
-          localStorage.setItem(STORAGE_KEYS.TOKEN, mockToken);
+          localStorage.setItem(STORAGE_KEYS.TOKEN, token);
         } catch (error) {
-          set({ isLoading: false });
+          set({
+            isLoading: false,
+            error: error as Error,
+          });
           throw error;
         }
       },
 
-      logout: () => {
-        set({ user: null, token: null });
-        localStorage.removeItem(STORAGE_KEYS.TOKEN);
+      register: async (data) => {
+        set({ isLoading: true, error: null });
+        try {
+          const { user, token } = await userApi.register(data);
+
+          set({
+            user,
+            token,
+            isLoading: false,
+          });
+
+          localStorage.setItem(STORAGE_KEYS.TOKEN, token);
+        } catch (error) {
+          set({
+            isLoading: false,
+            error: error as Error,
+          });
+          throw error;
+        }
+      },
+
+      getCurrentUser: async () => {
+        set({ isLoading: true, error: null });
+        try {
+          const user = await userApi.getCurrentUser();
+          set({ user, isLoading: false });
+        } catch (error) {
+          set({
+            isLoading: false,
+            error: error as Error,
+          });
+          throw error;
+        }
+      },
+
+      logout: async () => {
+        try {
+          await userApi.logout();
+        } catch (error) {
+          console.error('Logout error:', error);
+        } finally {
+          set({ user: null, token: null });
+          localStorage.removeItem(STORAGE_KEYS.TOKEN);
+        }
       },
     }),
     {
