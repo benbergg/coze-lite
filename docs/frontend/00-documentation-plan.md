@@ -86,52 +86,52 @@
   - 流式响应处理
   - 源码参考：`@coze-agent-ide/chat-*`
 
-- [ ] `14-agent-ide-publish.md` - Agent 发布
+- [x] `14-agent-ide-publish.md` - Agent 发布
   - 发布流程
   - 版本管理
   - 源码参考：`@coze-agent-ide/agent-publish`
 
 #### 3.4 Workflow 模块
-- [ ] `15-workflow-overview.md` - Workflow 总览
-- [ ] `16-workflow-canvas.md` - 工作流画布
+- [x] `15-workflow-overview.md` - Workflow 总览
+- [x] `16-workflow-canvas.md` - 工作流画布
   - Fabric Canvas 集成
   - 节点渲染系统
   - 连线系统
   - 源码参考：`@coze-workflow/fabric-canvas`
 
-- [ ] `17-workflow-nodes.md` - 节点系统
+- [x] `17-workflow-nodes.md` - 节点系统
   - 节点类型和组件
   - 节点配置面板
   - 自定义节点开发
   - 源码参考：`@coze-workflow/nodes`
 
-- [ ] `18-workflow-playground.md` - Workflow 调试运行
+- [x] `18-workflow-playground.md` - Workflow 调试运行
   - 调试运行环境
   - 变量查看
   - 执行日志
   - 源码参考：`@coze-workflow/playground`
 
-- [ ] `19-workflow-sdk.md` - Workflow SDK
+- [x] `19-workflow-sdk.md` - Workflow SDK
   - SDK 使用方法
   - 事件系统
   - 数据流管理
   - 源码参考：`@coze-workflow/sdk`
 
 #### 3.5 资源管理模块
-- [ ] `20-resource-management.md` - 资源管理总览
-- [ ] `21-plugin-system.md` - 插件系统
+- [x] `20-resource-management.md` - 资源管理总览
+- [x] `21-plugin-system.md` - 插件系统
   - 插件列表和管理
   - 插件配置
   - 插件调试
   - 源码参考：`@coze-studio/bot-plugin-store`
 
-- [ ] `22-knowledge-base.md` - 知识库管理
+- [x] `22-knowledge-base.md` - 知识库管理
   - 知识库创建和配置
   - 文档上传和索引
   - 知识库预览
   - 源码参考：`@coze-data/knowledge`
 
-- [ ] `23-database-module.md` - 数据库模块
+- [x] `23-database-module.md` - 数据库模块
   - 数据库管理
   - 表结构定义
   - 数据查看和编辑
