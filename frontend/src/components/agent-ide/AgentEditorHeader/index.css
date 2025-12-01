@@ -1,0 +1,45 @@
+.agent-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 16px;
+  background-color: var(--color-bg-1);
+  border-bottom: 1px solid var(--color-border-2);
+  flex-shrink: 0;
+}
+
+.agent-editor-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.agent-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agent-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-1);
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agent-editor-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

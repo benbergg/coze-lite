@@ -11,6 +11,7 @@ const WorkspaceListPage = lazy(() => import('@/pages/workspace/list'));
 const AgentListPage = lazy(() => import('@/pages/workspace/agent-list'));
 const PluginMarketplacePage = lazy(() => import('@/pages/plugin/marketplace'));
 const KnowledgePage = lazy(() => import('@/pages/knowledge'));
+const AgentEditorPage = lazy(() => import('@/pages/agent/editor'));
 
 function LoadingFallback() {
   return (
@@ -56,12 +57,10 @@ export function AppRoutes() {
 
           {/* Agent 编辑器（全屏，需要登录） */}
           <Route
-            path="agent/:agentId"
+            path="agent/:id"
             element={
               <AuthGuard>
-                <div className="w-full h-full p-8">
-                  Agent 编辑器（开发中）
-                </div>
+                <AgentEditorPage />
               </AuthGuard>
             }
           />

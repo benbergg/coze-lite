@@ -1,0 +1,81 @@
+.function-call-card {
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  background-color: var(--color-bg-2);
+  overflow: hidden;
+}
+
+.function-call-card :global(.arco-collapse-item-header) {
+  padding: 10px 12px !important;
+  background-color: transparent;
+}
+
+.function-call-card :global(.arco-collapse-item-content) {
+  background-color: transparent;
+}
+
+.function-call-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.tool-icon {
+  font-size: 16px;
+}
+
+.tool-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.duration {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.function-call-body {
+  padding: 0 12px 12px;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h4 {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-2);
+  text-transform: uppercase;
+}
+
+.json-content {
+  margin: 0;
+  padding: 12px;
+  background-color: var(--color-fill-1);
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-x: auto;
+  color: var(--color-text-1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.section.error .error-text {
+  margin: 0;
+  padding: 8px 12px;
+  background-color: var(--color-danger-light-2);
+  border-radius: 4px;
+  color: var(--color-danger-6);
+  font-size: 13px;
+}

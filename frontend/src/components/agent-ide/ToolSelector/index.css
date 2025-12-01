@@ -1,0 +1,177 @@
+.tool-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tool-selector-section {
+  background-color: var(--color-bg-2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+/* 已选工具列表 */
+.selected-tools-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selected-tool-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: var(--color-bg-1);
+  border: 1px solid var(--color-border-2);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.selected-tool-item:hover {
+  border-color: var(--color-primary-light-3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tool-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-light-1);
+  border-radius: 8px;
+  color: var(--color-primary-6);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.tool-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tool-desc {
+  font-size: 12px;
+  color: var(--color-text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tool-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* 工具统计 */
+.tool-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary-6);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* 添加工具弹窗 */
+.add-tool-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tool-search-input {
+  margin-bottom: 8px;
+}
+
+.tab-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 工具列表 */
+.tool-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.tool-list-item {
+  padding: 12px;
+  border-bottom: 1px solid var(--color-border-1);
+  transition: background-color 0.2s;
+}
+
+.tool-list-item:last-child {
+  border-bottom: none;
+}
+
+.tool-list-item:hover {
+  background-color: var(--color-fill-1);
+}
+
+.tool-list-item-content {
+  margin-left: 8px;
+}
+
+.tool-list-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+  margin-bottom: 2px;
+}
+
+.tool-list-item-desc {
+  font-size: 12px;
+  color: var(--color-text-3);
+}

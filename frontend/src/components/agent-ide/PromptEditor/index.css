@@ -1,0 +1,141 @@
+.prompt-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.prompt-editor-section {
+  background-color: var(--color-bg-2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+}
+
+.section-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.form-item {
+  margin-bottom: 16px;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-item label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-2);
+}
+
+.help-icon {
+  color: var(--color-text-3);
+  font-size: 14px;
+  cursor: help;
+}
+
+/* Prompt 文本域 */
+.prompt-textarea {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* 变量显示 */
+.variables-display {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px;
+  background-color: var(--color-fill-1);
+  border-radius: 4px;
+}
+
+.variables-label {
+  font-size: 12px;
+}
+
+/* 变量插入 */
+.variable-insert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* 模板列表 */
+.template-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.template-item {
+  padding: 12px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.template-item:hover {
+  border-color: var(--color-primary-6);
+  background-color: var(--color-primary-light-1);
+}
+
+.template-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-1);
+  margin-bottom: 4px;
+}
+
+.template-preview {
+  font-size: 12px;
+  color: var(--color-text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 模型选项 */
+.model-option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.model-name {
+  font-size: 13px;
+  color: var(--color-text-1);
+}
+
+.model-desc {
+  font-size: 11px;
+  color: var(--color-text-3);
+}
